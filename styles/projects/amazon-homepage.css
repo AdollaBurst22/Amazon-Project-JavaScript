@@ -1,0 +1,101 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 100;
+}
+
+.header-img {
+  width: 100px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.search-box {
+  padding: 0px;
+  margin: 0px;
+}
+
+.search-icon {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+}
+
+.search-bar:focus {
+  outline: 2px solid rgb(234, 157, 15);
+  box-shadow: 1px 1px rgb(141, 95, 10);
+}
+
+.search-btn {
+  outline: 1px solid rgb(141, 95, 10);
+  background-color: rgb(234, 157, 15);
+}
+
+.return-cart {
+  height: 45px;
+  align-items: center;
+}
+
+.return-text,
+.orders-text {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  align-items: center;
+}
+
+.return-orders-btn {
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 50px;
+  padding: 1px 15px;
+  border-radius: 3px;
+  margin-right: 5px;
+  color: black;
+  background-color: rgb(234, 157, 15);
+
+}
+
+.cart-btn {
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 3px;
+  color: black;
+  background-color: rgb(234, 157, 15);
+
+}
+
+.cart-quantity {
+  color: black;
+}
+
+.cart-text,
+.cart-quantity {
+  font-weight: 700;
+}
+
+.return-orders-btn:hover,
+.cart-btn:hover {
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+
+  .cart-quantity {
+    color: rgb(234, 157, 15);
+  }
+}
+
+.orders-text {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.return-text {
+  font-size: 13px;
+}

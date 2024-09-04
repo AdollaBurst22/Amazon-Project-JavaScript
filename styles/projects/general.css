@@ -1,0 +1,158 @@
+body {
+  font-family: Roboto, Arial;
+  color: rgba(42, 29, 29, 0.955);
+  margin: 0;
+  padding: 0;
+}
+
+/* These styles will limit text to 2 lines. Anything
+   beyond 2 lines will be replaced with "..."
+   You can find this code by using an A.I. tool or by
+   searching in Google.
+   https://css-tricks.com/almanac/properties/l/line-clamp/ */
+.limit-text-to-2-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.card-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  background-color: #efefef;
+}
+
+.card {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-wrap: wrap;
+  margin: 5px auto;
+}
+
+.card-body {
+  margin-bottom: 50px;
+}
+
+.card-image-container {
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.card-image {
+  /* Images will overflow their container by default. To
+    prevent this, we set max-width and max-height to 100%
+    so they stay inside their container. */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cardText {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.rating-stars {
+  text-align: left;
+  margin-top: 3px;
+  width: 100px;
+  height: 20px;
+}
+
+.rating-numbers {
+  font-size: 12px;
+}
+
+.product-price {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 18px;
+  padding-top: 5px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.buy-quantity-btn {
+  background-color: #efefef;
+  border-radius: 5px;
+  border: none;
+}
+
+.size-container,
+.available-color-container {
+  margin-top: 5px;
+}
+
+.size-header,
+.color-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(55, 31, 31);
+}
+
+.size-btn1,
+.color-btn1 {
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  border: 2px solid rgb(234, 157, 15);
+  font-size: 14px;
+}
+
+.size-btn2,
+.size-btn3,
+.size-btn4,
+.color-btn2,
+.color-btn3,
+.color-btn4 {
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  font-size: 14px;
+}
+
+.size-btn2:focus {
+  border: 2px solid rgb(234, 157, 15);
+}
+
+
+
+.card-btn-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  /* Move to the center of the parent */
+  transform: translateX(-50%);
+  /* Adjust back half of its own width */
+  margin-bottom: 20px;
+}
+
+.card-btn {
+  width: 120px;
+  height: 30px;
+  background-color: rgb(228, 187, 53);
+  border-radius: 30px;
+  border: none;
+}
+
+.card-btn:hover {
+  background-color: rgb(234, 157, 15);
+}
