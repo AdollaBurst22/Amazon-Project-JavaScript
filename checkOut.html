@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Check Out</title>
+  <link rel="icon" href="images/amazon-logo.png">
+  <link rel="stylesheet" href="styles/sources/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/projects/checkOut.css">
+
+  <!-- Load a font called Roboto from Google Fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="checkout-container">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="col-md-4 checkout-right-side">
+          <a class="navbar-brand p-0 ms-4" href="#">
+            <img src="images/amazon-logo.png" alt="checkout-amazon-logo" class="checkout-header-logo p-0 m-0">
+          </a>
+        </div>
+
+        <div class="col-md-4 middle-header">
+          <p class="checkout-header p-0 m-0">Checkout (<span class="checkout-item-quantity">4 items</span>)</p>
+        </div>
+
+        <div class="col-md-4 left-side-lock">
+          <img src="images/icons/checkout-lock-icon.png" class="checkout-lock me-3" alt="checkout-lock">
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  <div class="container-fluid order-review-container pt-5 mt-5 mb-5">
+    <h4 class="review-header my-4 ms-4">Review your Order</h4>
+
+    <div class="row ms-4 me-2">
+      <div class="col-md-8 review-container m-0 p-0">
+
+        <div class="product-and-deli-date-container">
+          <h5 class="deli-header">Delivery Date: Tuesday, September 17</h5>
+
+          <div class="review-grid">
+            <div class="review-product-img">
+              <img src="images/products/athletic-cotton-socks-6-pairs.jpg" style="width: 7rem; height: 8rem;" alt="">
+            </div>
+
+            <div class="review-product-details ps-3">
+              <p class="review-product-name">Black and Gray Athletic Cotton Socks - 6 Pairs</p>
+              <p class="review-product-price">$10.90</p>
+              <p class="review-quantity-text">Quantity : 4</p>
+              <button class="review-update-btn">Update</button>
+              <button class="review-delete-btn">Delete</button>
+            </div>
+
+            <div class="review-deli-options ps-2">
+              <p class="deli-options-header">Choose a delivery option:</p>
+              <div class="deli-date-grid">
+
+                <div class="date-choose-container">
+                  <input type="checkbox" id="date-choose-1" class="date-choose-1">
+                </div>
+                <div class="deli-option-1">
+                  <label for="date-choose-1">
+                    <span class="date">Tuesday, September 17</span><br>
+                    <span class="fee">FREE Shipping</span>
+                  </label>
+                </div>
+
+                <div class="date-choose-container">
+                  <input type="checkbox" id="date-choose-2" class="date-choose-2" name="date-choose-2">
+                </div>
+                <div class="deli-option-2">
+                  <label for="date-choose-2">
+                    <span class="date">Wednesday, September 11</span><br>
+                    <span class="fee">$4.99 - Shipping</span>
+                  </label>
+                </div>
+
+                <div class="date-choose-container">
+                  <input type="checkbox" id="date-choose-3" class="date-choose-3" name="date-choose-3">
+                </div>
+                <div class="deli-option-3">
+                  <label for="date-choose-3">
+                    <span class="date">Tuesday, September 17</span><br>
+                    <span class="fee">$9.99 - Shipping</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-md-4 order-summary-container">
+        <div class="summary ms-2">
+          <h5 class="summary-header">Order Summary</h5>
+
+          <div class="order-summary">
+
+            <div class="items-container">
+              <p class="items p-0 m-0">Items (8):</p>
+              <span class="items-cost">$217.15</span>
+            </div>
+
+            <div class="shipping-and-handling-container">
+              <p class="shipping-and-handling p-0 m-0 mb-2">Shipping & Handling</p>
+              <span class="shipping-and-handling-cost">$4.99</span>
+            </div>
+
+            <div class="total-before-tax-container mt-2">
+              <p class="total-before-tax p-0 m-0">Total before Tax:</p>
+              <span class="total-before-tax-cost">$224.53</span>
+            </div>
+
+            <div class="estimated-tax-container">
+              <p class="estimated-tax p-0 m-0 pb-2">Estimated Tax (10%):</p>
+              <span class="estimated-tax-cost">$22.35</span>
+            </div>
+
+          </div>
+
+          <div class="total-and-pay">
+            <div class="order-total-container pt-2 mb-3">
+              <p class="order-total p-0 m-0">Order Total:</p><span class="order-total-cost">$244.87</span>
+            </div>
+
+            <div class="pay-pal-check-container mb-3">
+              <label for="pay-pal-check" class="pay-pal-check me-2">Use PayPal
+              </label>
+              <input type="checkbox" name="pay-pal-check" id="pay-pal-check" value="pay-pal-check">
+            </div>
+
+            <div class="place-order-container pb-2">
+              <button class="place-order-btn">Place your Order</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="styles/sources/popper.min.js"></script>
+  <script src="styles/sources/bootstrap.min.js"></script>
+
+</body>
+
+</html>
