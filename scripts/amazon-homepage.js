@@ -1,4 +1,4 @@
-import { productList } from '../data/products.js'
+import { productList } from '../data/products.js';
 import { cart, checkProduct } from './cart.js';
 
 let productHtml = '';
@@ -33,7 +33,7 @@ productList.forEach((product) => {
     </div>
 
     <div class="card-btn-container">
-      <button class="card-btn card-btn-js" data-product-id="${productList.id}">Add to Cart</button>
+      <button class="card-btn card-btn-js" data-product-id="${product.id}">Add to Cart</button>
     </div>
   </div>
   `
@@ -60,6 +60,7 @@ cardBtns.forEach((addToCartBtn) => {
   });
 });
 
+
 /*   *********  Generating UUID (Universally Unique Identifiee) ***********
 function generateUUID() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -71,3 +72,4 @@ function generateUUID() {
 
 console.log(generateUUID());
 */
+
