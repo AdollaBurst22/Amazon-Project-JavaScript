@@ -17,60 +17,73 @@ cart.forEach((cart_product) => {
       if (matchingProduct) {
 
         cart_productList_HTML += `
-        <div class="product-and-deli-date-container mb-2">
-          <h5 class="deli-header">Delivery Date: Tuesday, September 17</h5>
-
-          <div class="review-grid">
-            <div class="review-product-img-container">
-              <img src="images/products/${matchingProduct.image}" class="review-product-img" alt="">
-            </div>
-
-            <div class="review-product-details ps-3">
-              <p class="review-product-name">${matchingProduct.name}</p>
-              <p class="review-product-price">${(matchingProduct.priceCents / 100).toFixed(2)}</p>
-              <p class="review-quantity-text">Quantity : ${cart_product.quantity}</p>
-              <button class="review-update-btn">Update</button>
-              <button class="review-delete-btn">Delete</button>
-            </div>
-            
-            <div class="review-deli-options ps-2">
-              <p class="deli-options-header">Choose a delivery option:</p>
-              <div class="deli-date-grid">
-
-                <div class="date-choose-container">
-                  <input type="checkbox" id="date-choose-1" class="date-choose-1" name="date-choose-1">
-                </div>
-                <div class="deli-option-1">
-                  <label for="date-choose-1">
-                    <span class="date">Tuesday, September 17</span><br>
-                    <span class="fee">FREE Shipping</span>
-                  </label>
-                </div>
-
-                <div class="date-choose-container">
-                  <input type="checkbox" id="date-choose-2" class="date-choose-2" name="date-choose-2">
-                </div>
-                <div class="deli-option-2">
-                  <label for="date-choose-2">
-                    <span class="date">Wednesday, September 11</span><br>
-                    <span class="fee">$4.99 - Shipping</span>
-                  </label>
-                </div>
-
-                <div class="date-choose-container">
-                  <input type="checkbox" id="date-choose-3" class="date-choose-3" name="date-choose-3">
-                </div>
-                <div class="deli-option-3">
-                  <label for="date-choose-3">
-                    <span class="date">Tuesday, September 17</span><br>
-                    <span class="fee">$9.99 - Shipping</span>
-                  </label>
-                </div>
-              </div>
-
-            </div>
+        <div class="cart-item-container">
+          <div class="delivery-date">
+            Delivery date: Tuesday, June 21
           </div>
 
+          <div class="cart-item-details-grid">
+            <img class="product-image" src="images/products/${matchingProduct.image}">
+
+            <div class="cart-item-details">
+              <div class="product-name">
+                ${matchingProduct.name}
+              </div>
+              <div class="product-price">
+                $10.90
+              </div>
+              <div class="product-quantity">
+                <span>
+                  Quantity: <span class="quantity-label">${matchingProduct.quantity}</span>
+                </span>
+                <span class="update-quantity-link link-primary">
+                  Update
+                </span>
+                <span class="delete-quantity-link link-primary">
+                  Delete
+                </span>
+              </div>
+            </div>
+
+            <div class="delivery-options">
+              <div class="delivery-options-title">
+                Choose a delivery option:
+              </div>
+              <div class="delivery-option">
+                <input type="radio" checked class="delivery-option-input" name="delivery-option-${matchingProduct.id}">
+                <div>
+                  <div class="delivery-option-date">
+                    Tuesday, June 21
+                  </div>
+                  <div class="delivery-option-price">
+                    FREE Shipping
+                  </div>
+                </div>
+              </div>
+              <div class="delivery-option">
+                <input type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}">
+                <div>
+                  <div class="delivery-option-date">
+                    Wednesday, June 15
+                  </div>
+                  <div class="delivery-option-price">
+                    $4.99 - Shipping
+                  </div>
+                </div>
+              </div>
+              <div class="delivery-option">
+                <input type="radio" class="delivery-option-input" name="delivery-option-${matchingProduct.id}">
+                <div>
+                  <div class="delivery-option-date">
+                    Monday, June 13
+                  </div>
+                  <div class="delivery-option-price">
+                    $9.99 - Shipping
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       `
       };
@@ -80,16 +93,46 @@ cart.forEach((cart_product) => {
   });
 });
 
-document.querySelector('.review-container').innerHTML = cart_productList_HTML;
+document.querySelector('.order-summary').innerHTML += cart_productList_HTML;
 
-const checkboxInputs = document.querySelectorAll('.date-choose-1, .date-choose-2, .date-choose-3');
+/*
+const deli_date_containers = document.querySelectorAll('.deli-date-grid');
 
-checkboxInputs.forEach((input) => {
-  input.addEventListener('change', () => {
-    checkboxInputs.forEach((otherInput) => {
-      if (input !== otherInput && otherInput.checked) {
-        otherInput.checked = false;
-      };
+deli_date_containers.forEach((container) => {
+
+  const radioInputs = container.querySelectorAll('.date-choose');
+
+  radioInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      radioInputs.forEach((otherInput) => {
+        if (input !== otherInput && otherInput.checked) {
+          otherInput.checked = false;
+        };
+      });
+    });
+  });
+
+});
+const deli_date_containers = document.querySelectorAll('.deli-date-grid');
+
+deli_date_containers.forEach((container) => {
+  const radioInputs = container.querySelectorAll('.date-choose');
+
+  radioInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      // Check if the current input is already checked
+      if (input.checked) {
+        return; // Exit the function if it is already checked
+      }
+
+      // Uncheck all other inputs
+      radioInputs.forEach((otherInput) => {
+        if (input !== otherInput) {
+          otherInput.checked = false;
+        }
+      });
     });
   });
 });
+*/
+
