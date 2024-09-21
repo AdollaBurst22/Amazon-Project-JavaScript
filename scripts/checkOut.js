@@ -1,4 +1,4 @@
-import { cart } from './cart.js';
+import { cart, removeProduct } from './cart.js';
 import { productList } from '../data/products.js';
 
 
@@ -17,7 +17,7 @@ cart.forEach((cart_product) => {
       if (matchingProduct) {
 
         cart_productList_HTML += `
-        <div class="cart-item-container">
+        <div class="cart-item-container cart-item-container-${matchingProduct.id}" data-container-id="${matchingProduct.id}">
           <div class="delivery-date">
             Delivery date: Tuesday, June 21
           </div>
@@ -34,12 +34,12 @@ cart.forEach((cart_product) => {
               </div>
               <div class="product-quantity">
                 <span>
-                  Quantity: <span class="quantity-label">${matchingProduct.quantity}</span>
+                  Quantity: <span class="quantity-label">${cart_product.quantity}</span>
                 </span>
-                <span class="update-quantity-link link-primary">
+                <span class="text-success update-quantity-link link-primary">
                   Update
                 </span>
-                <span class="delete-quantity-link link-primary">
+                <span class="text-danger delete-quantity-link link-primary" data-product-id="${matchingProduct.id}">
                   Delete
                 </span>
               </div>
@@ -93,46 +93,16 @@ cart.forEach((cart_product) => {
   });
 });
 
+
 document.querySelector('.order-summary').innerHTML += cart_productList_HTML;
 
-/*
-const deli_date_containers = document.querySelectorAll('.deli-date-grid');
+const deleteBtns = document.querySelectorAll('.delete-quantity-link');
+deleteBtns.forEach((button) => {
+  button.addEventListener('click', () => {
+    const productId = button.dataset.productId;
+    removeProduct(productId);
 
-deli_date_containers.forEach((container) => {
-
-  const radioInputs = container.querySelectorAll('.date-choose');
-
-  radioInputs.forEach((input) => {
-    input.addEventListener('change', () => {
-      radioInputs.forEach((otherInput) => {
-        if (input !== otherInput && otherInput.checked) {
-          otherInput.checked = false;
-        };
-      });
-    });
-  });
-
-});
-const deli_date_containers = document.querySelectorAll('.deli-date-grid');
-
-deli_date_containers.forEach((container) => {
-  const radioInputs = container.querySelectorAll('.date-choose');
-
-  radioInputs.forEach((input) => {
-    input.addEventListener('change', () => {
-      // Check if the current input is already checked
-      if (input.checked) {
-        return; // Exit the function if it is already checked
-      }
-
-      // Uncheck all other inputs
-      radioInputs.forEach((otherInput) => {
-        if (input !== otherInput) {
-          otherInput.checked = false;
-        }
-      });
-    });
-  });
-});
-*/
-
+    const cartItemContainer = document.querySelector(`.cart-item-container-${productId}`);
+    cartItemContainer.remove();
+  })
+})

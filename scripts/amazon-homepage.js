@@ -49,6 +49,7 @@ function updateCartQuantity() {
   });
   document.querySelector('.cart-quantity-js').innerText = cartQuantity;
 }
+updateCartQuantity();
 
 let cardBtns = document.querySelectorAll('.card-btn-js');
 cardBtns.forEach((addToCartBtn) => {
