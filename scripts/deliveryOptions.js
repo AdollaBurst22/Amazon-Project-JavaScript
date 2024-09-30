@@ -11,3 +11,13 @@ export const deliveryOptions = [{
   deliveryDays: 1,
   priceCents: 999
 }];
+
+export function getMatchingOption(cart_product) {
+  let matchingOption;
+  deliveryOptions.forEach((deliveryOption) => {
+    if (deliveryOption.id === cart_product.deliveryOptionId) {
+      matchingOption = deliveryOption;
+    }
+  });
+  return matchingOption;
+};
