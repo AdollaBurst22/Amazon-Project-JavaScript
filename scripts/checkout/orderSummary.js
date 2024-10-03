@@ -128,4 +128,9 @@ export function renderSummaryOrder() {
   });
 };
 
+let st = [];
+for (let i = 0; i < 1000; i++) {
+  st.push("ပြောလေ");
+
+};
 
