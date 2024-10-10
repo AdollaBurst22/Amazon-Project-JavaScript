@@ -36,14 +36,14 @@ export function renderSummaryOrder() {
                   <div class="product-price">
                     $${formatCurrency(matchingProduct.priceCents)}
                   </div>
-                  <div class="product-quantity">
+                  <div class="product-quantity js-product-quantity-${matchingProduct.id}">
                     <span>
                       Quantity: <span class="quantity-label">${cart_product.quantity}</span>
                     </span>
                     <span class="text-success update-quantity-link link-primary">
                       Update
                     </span>
-                    <span class="text-danger delete-quantity-link link-primary" data-product-id="${matchingProduct.id}">
+                    <span class="text-danger js-delete-link-${matchingProduct.id} delete-quantity-link link-primary" data-product-id="${matchingProduct.id}">
                       Delete
                     </span>
                   </div>
@@ -93,8 +93,6 @@ export function renderSummaryOrder() {
     return deliveryHtml;
   };
 
-
-
   const deleteBtns = document.querySelectorAll('.delete-quantity-link');
   deleteBtns.forEach((button) => {
     button.addEventListener('click', () => {
@@ -126,11 +124,5 @@ export function renderSummaryOrder() {
       renderPaymentSummary();
     });
   });
-};
-
-let st = [];
-for (let i = 0; i < 1000; i++) {
-  st.push("ပြောလေ");
-
 };
 

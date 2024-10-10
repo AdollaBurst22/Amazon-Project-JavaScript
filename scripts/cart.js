@@ -1,4 +1,3 @@
-
 export let cart;
 loadFromLocalStorage();
 
