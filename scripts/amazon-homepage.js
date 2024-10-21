@@ -14,9 +14,9 @@ productList.forEach((product) => {
     <div class="card-body">
       <p class="card-text cardText limit-text-to-2-lines">${product.name}</p>
 
-      <img src="images/ratings/rating-${product.rating.stars * 10}.png" class="rating-stars" alt="">
+      <img src="${product.getRating()}" class="rating-stars" alt="">
       <span class="text-primary rating-numbers"> ${product.rating.count}</span>
-      <p class="product-price">$${formatCurrency(product.priceCents)}</p>
+      <p class="product-price">${product.getPriceCents()}</p>
 
       <select name="number" class="buy-quantity-btn">
         <option value="1">1</option>

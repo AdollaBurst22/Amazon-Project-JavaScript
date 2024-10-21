@@ -1,12 +1,26 @@
-export function getMatchingProduct(cart_productId) {
-  let matchingProduct;
-  productList.forEach((product) => {
+import { formatCurrency } from "../scripts/money.js";
 
-    if (product.id === cart_productId) {
-      matchingProduct = product;
-    }
-  });
-  return matchingProduct;
+class Product {
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+
+  constructor(productDetails) {
+    this.id = productDetails.id;
+    this.image = productDetails.image;
+    this.name = productDetails.name;
+    this.rating = productDetails.rating;
+    this.priceCents = productDetails.priceCents
+  };
+  getRating() {
+    return `images/ratings/rating-${this.rating.stars * 10}.png`;
+  };
+
+  getPriceCents() {
+    return `$${formatCurrency(this.priceCents)}`;
+  };
 };
 
 export const productList = [
@@ -668,4 +682,17 @@ export const productList = [
       "mens"
     ]
   }
-];
+].map((productDetails) => {
+  return new Product(productDetails);
+});
+
+export function getMatchingProduct(cart_productId) {
+  let matchingProduct;
+  productList.forEach((product) => {
+
+    if (product.id === cart_productId) {
+      matchingProduct = product;
+    }
+  });
+  return matchingProduct;
+};
