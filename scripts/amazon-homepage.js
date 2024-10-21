@@ -30,8 +30,9 @@ productList.forEach((product) => {
         <option value="9">9</option>
         <option value="10">10</option>
       </select>
-
+      ${product.generateSizeChart()}
     </div>
+
 
     <div class="card-btn-container">
       <button class="card-btn card-btn-js" data-product-id="${product.id}">Add to Cart</button>

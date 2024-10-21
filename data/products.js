@@ -21,6 +21,28 @@ class Product {
   getPriceCents() {
     return `$${formatCurrency(this.priceCents)}`;
   };
+
+  generateSizeChart() {
+    return '';
+  }
+};
+
+class Clothing extends Product {
+  sizeChartLink;
+
+  constructor(productDetails) {
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  };
+
+  generateSizeChart() {
+    return `
+    <div>
+      <a href="${this.sizeChartLink}" target="_blank">
+        Size Chart
+      </a>
+    </div>`
+  };
 };
 
 export const productList = [
@@ -683,8 +705,13 @@ export const productList = [
     ]
   }
 ].map((productDetails) => {
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
+
+
 
 export function getMatchingProduct(cart_productId) {
   let matchingProduct;
