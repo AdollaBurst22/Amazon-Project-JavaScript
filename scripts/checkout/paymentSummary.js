@@ -21,7 +21,6 @@ export function renderPaymentSummary() {
   const estimatedTax = totalBeforeTax * 0.1;
   const orderTotal = totalBeforeTax + estimatedTax;
 
-  let paymentSummaryHtml;
   document.querySelector('.payment-summary-js').innerHTML = `
         <div class="payment-summary-title">
           Order Summary

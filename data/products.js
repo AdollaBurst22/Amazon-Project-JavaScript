@@ -45,6 +45,32 @@ class Clothing extends Product {
   };
 };
 
+export let productList = [];
+
+export function loadProducts(func) {
+  const xhr = new XMLHttpRequest();  //creatind new request/message to the server
+
+  //xhr.response => response from the server 
+  xhr.addEventListener('load', () => {
+    productList = JSON.parse(xhr.response).map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+    func();
+
+    console.log('loaded products.');
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  /* two parameters => with which method the request will be sent (GET) , where to send the request(url of the server) */
+
+  xhr.send(); /*send() => an asynchronous method and don't wait the response from the server and skip to the next code, So we need to create a callback function of what to do after loading from the server before open() method
+  */
+};
+
+/*
 export const productList = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -710,8 +736,7 @@ export const productList = [
   }
   return new Product(productDetails);
 });
-
-
+*/
 
 export function getMatchingProduct(cart_productId) {
   let matchingProduct;

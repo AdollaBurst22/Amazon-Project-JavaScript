@@ -1,67 +1,72 @@
-import { productList } from '../data/products.js';
+import { productList, loadProducts } from '../data/products.js';
 import { cart, checkProduct } from './cart.js';
 import { formatCurrency } from './money.js';
 
-let productHtml = '';
+loadProducts(renderProducts);
 
-productList.forEach((product) => {
-  productHtml += `
-  <div class="card" style="width: 12rem; height: auto;">
-    <div class="card-image-container">
-      <img src="images/products/${product.image}" class="card-img-top card-image" alt="...">
+function renderProducts() {
+  let productHtml = '';
+
+  productList.forEach((product) => {
+    productHtml += `
+    <div class="card" style="width: 12rem; height: auto;">
+      <div class="card-image-container">
+        <img src="${product.image}" class="card-img-top card-image" alt="...">
+      </div>
+
+      <div class="card-body">
+        <p class="card-text cardText limit-text-to-2-lines">${product.name}</p>
+
+        <img src="${product.getRating()}" class="rating-stars" alt="">
+        <span class="text-primary rating-numbers"> ${product.rating.count}</span>
+        <p class="product-price">${product.getPriceCents()}</p>
+
+        <select name="number" class="buy-quantity-btn">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        ${product.generateSizeChart()}
+      </div>
+
+
+      <div class="card-btn-container">
+        <button class="card-btn card-btn-js" data-product-id="${product.id}">Add to Cart</button>
+      </div>
     </div>
-
-    <div class="card-body">
-      <p class="card-text cardText limit-text-to-2-lines">${product.name}</p>
-
-      <img src="${product.getRating()}" class="rating-stars" alt="">
-      <span class="text-primary rating-numbers"> ${product.rating.count}</span>
-      <p class="product-price">${product.getPriceCents()}</p>
-
-      <select name="number" class="buy-quantity-btn">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select>
-      ${product.generateSizeChart()}
-    </div>
-
-
-    <div class="card-btn-container">
-      <button class="card-btn card-btn-js" data-product-id="${product.id}">Add to Cart</button>
-    </div>
-  </div>
-  `
-});
-
-let productContainer = document.querySelector('.product-container-js');
-productContainer.innerHTML += productHtml;
-
-function updateCartQuantity() {
-  let cartQuantity = 0;
-  cart.forEach((item) => {
-    cartQuantity += item.quantity;
+    `
   });
-  document.querySelector('.cart-quantity-js').innerText = cartQuantity;
-}
-updateCartQuantity();
 
-let cardBtns = document.querySelectorAll('.card-btn-js');
-cardBtns.forEach((addToCartBtn) => {
-  addToCartBtn.addEventListener('click', () => {
-    const productId = addToCartBtn.dataset.productId;
+  let productContainer = document.querySelector('.product-container-js');
+  productContainer.innerHTML += productHtml;
 
-    checkProduct(productId);
-    updateCartQuantity();
+  function updateCartQuantity() {
+    let cartQuantity = 0;
+    cart.forEach((item) => {
+      cartQuantity += item.quantity;
+    });
+    document.querySelector('.cart-quantity-js').innerText = cartQuantity;
+  }
+  updateCartQuantity();
+
+  let cardBtns = document.querySelectorAll('.card-btn-js');
+  cardBtns.forEach((addToCartBtn) => {
+    addToCartBtn.addEventListener('click', () => {
+      const productId = addToCartBtn.dataset.productId;
+
+      checkProduct(productId);
+      updateCartQuantity();
+    });
   });
-});
+};
+
 
 
 /*   *********  Generating UUID (Universally Unique Identifiee) ***********
