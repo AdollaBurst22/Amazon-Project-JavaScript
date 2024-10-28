@@ -10,7 +10,7 @@ export function renderSummaryOrder() {
   let cart_productList_HTML = '';
 
   cart.forEach((cart_product) => {
-    let cart_productId = cart_product.id;
+    let cart_productId = cart_product.productId;
     const matchingOption = getMatchingOption(cart_product);
 
     const todayDate = dayjs();

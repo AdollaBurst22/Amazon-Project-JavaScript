@@ -47,6 +47,22 @@ class Clothing extends Product {
 
 export let productList = [];
 
+export function loadProductsFetch() {
+  const fetchedProduct = fetch('https://supersimplebackend.dev/products').then((response) => {
+    return response.json();
+  }).then((productData) => {
+    productList = productData.map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+    console.log('loaded products.');
+  });
+  return fetchedProduct;
+};
+
+
 export function loadProducts(func) {
   const xhr = new XMLHttpRequest();  //creatind new request/message to the server
 
@@ -63,10 +79,16 @@ export function loadProducts(func) {
     console.log('loaded products.');
   });
 
+  //Error Handling (to deal with unexpectd error, like bad internet connection)
+  // (error) => this parameter contains the informations about the error.
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected Error Occured. Please Try Again Later.');
+  });
+
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   /* two parameters => with which method the request will be sent (GET) , where to send the request(url of the server) */
 
-  xhr.send(); /*send() => an asynchronous method and don't wait the response from the server and skip to the next code, So we need to create a callback function of what to do after loading from the server before open() method
+  xhr.send(); /*send() => an synchronous method and don't wait the response from the server and skip to the next code, So we need to create a callback function of what to do after loading from the server before open() method
   */
 };
 

@@ -1,19 +1,24 @@
 import { loadFromLocalStorage, cart } from "../../../../scripts/cart.js";
 import { renderSummaryOrder } from "../../../../scripts/checkout/orderSummary.js";
-
+import { loadProductsFetch } from "../../../../data/products.js";
 
 describe('test suite : Display the product in the cart(orderSummary.js)', () => {
+  beforeAll((done) => {
+    loadProductsFetch().then(() => {
+      done();
+    });
+  });  //done() provided by jasmine framework wait will wait till the beforeAll() is done loading.
 
   beforeEach(function () {
     spyOn(localStorage, 'setItem');
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([{
-        id: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+        productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
         quantity: 2,
         deliveryOptionId: '1'
       },
       {
-        id: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+        productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
         quantity: 1,
         deliveryOptionId: '1'
       }]);
@@ -26,8 +31,8 @@ describe('test suite : Display the product in the cart(orderSummary.js)', () => 
     `;
     loadFromLocalStorage();
     renderSummaryOrder();
-
   });
+
   let productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
   let productId2 = '15b6fc6f-327a-4ec4-896f-486349e85a3d';
 
@@ -56,10 +61,11 @@ describe('test suite : Display the product in the cart(orderSummary.js)', () => 
     ).toEqual(null);
 
     expect(cart.length).toEqual(1);
-    expect(cart[0].id).toEqual(`${productId2}`);
+    expect(cart[0].productId).toEqual(`${productId2}`);
   });
 
   afterEach(function () {
     document.querySelector('.order-summary-container').innerHTML = " ";
   });
+
 });
