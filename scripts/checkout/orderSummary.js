@@ -1,4 +1,4 @@
-import { cart, removeProduct, updateDeliveryOption } from '../cart.js';
+import { cart, removeProduct, updateDeliveryOption, checkOutQuantity } from '../cart.js';
 import { productList, getMatchingProduct } from '../../data/products.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { formatCurrency } from '../money.js';
@@ -106,14 +106,6 @@ export function renderSummaryOrder() {
     })
   });
 
-
-  function checkOutQuantity() {
-    let cartQuantity = 0;
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-    document.querySelector('.checkOutQuantity').innerHTML = cartQuantity;
-  };
   checkOutQuantity();
 
   document.querySelectorAll('.js-delivery-option').forEach((element) => {
